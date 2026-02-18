@@ -1,0 +1,45 @@
+---
+title: "Metabolic Pathway Analysis - MPA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MPA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Here is an example of how to run the `read_expression_data` function:
+
+```{r setup}
+library(MPA)
+file_name <- "test_expr_file.txt"
+df = data.frame(cond = c(10,12), ctrl = c(11,20), row.names = c("m1","m2"))
+write.table(df, file_name, sep = "\t")
+
+df1 <- read_expression_data(file_name)
+df1
+```
+
+
+Let's see the documentation for:
+`read_expression_data()`
+
+```{r}
+?read_expression_data
+```
+
+
+
+Show heatmap of my data
+
+```{r}
+img1 <- heatmap(as.matrix(df1))
+img1
+
+```
